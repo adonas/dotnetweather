@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4ff96c72-a8ae-410e-bd7e-6e665b20bd94</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.4" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.6" />
+  </ItemGroup>
+  <Target Name="Tailwind" BeforeTargets="Build">
+    <Exec Command="dotnet tailwindcss -i Styles/input.css -o wwwroot/css/app.css --minify" />    
+  </Target>
+
+
+</Project>

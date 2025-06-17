@@ -1,0 +1,28 @@
+name: Build & Deploy BlazorApp
+
+on: 
+  push:
+    branches: ["main"]
+  env:
+    DOTNET_VERSION: '9.0.x'
+    NODE_VERSION: '22.x'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1.-Descargar el código ...
+      - uses: actions/checkout@v4
+
+      #2-Instalar d.Net
+
+      #3.- Paquetes Nugget
+
+      #4.- Instalar Node para TailWind
+
+      #5.- Restore and publish
+
+      #6.- Artifact
+
+      #7.-Despliegue
