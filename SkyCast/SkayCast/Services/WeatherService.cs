@@ -17,7 +17,7 @@ public class WeatherService
     public async Task<WeatherDto> GetByCityAsync(string city)
     {
         var url = $"{baseURL}/weather?q={Uri.EscapeDataString(city)}&units=metric&appid={_key}&lang=es";
-        return await _http.GetFromJsonAsync<WeatherDto>(url);
+        return await _http.GetFromJsonAsync<WeatherDto?>(url);
         
     }
 
