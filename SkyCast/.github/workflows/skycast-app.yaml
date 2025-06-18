@@ -43,7 +43,7 @@ jobs:
           dotnet publish SkyCast/SkyCast.csproj -c Release -o publish
 
       #6.- Artifact , generar un ejecutable y hacer pruebas
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: publish
           path: publish
