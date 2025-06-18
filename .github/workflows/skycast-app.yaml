@@ -3,14 +3,14 @@ name: Build & Deploy BlazorApp
 on: 
   push:
     branches: ["main"]
-  env:
-    DOTNET_VERSION: '9.0.x'
-    NODE_VERSION: '22.x'
+env:
+  DOTNET_VERSION: '9.0.x'
+  NODE_VERSION: '22.x'
 
-  permissions:
-    contents: write
-    pages: write
-    id-token: write    
+permissions:
+  contents: write
+  pages: write
+  id-token: write    
 
 jobs:
   build:
@@ -47,6 +47,10 @@ jobs:
           echo "{\"OpenWeather\":{\"Key\":\"${{ secrets.OPENWEATHER_KEY }}\"}}" > SkyCast/appsettings.Production.json
           dotnet publish SkyCast/SkyCast.csproj -c Release -o publish
 
+      - name: Listar salida
+        run: |
+          echo "Contenido Geneado"
+          ls -R publish | head -n 100
       #6.- Artifact , generar un ejecutable y hacer pruebas
       - uses: actions/upload-artifact@v4
         with:
@@ -59,5 +63,5 @@ jobs:
               
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .publish/wwwroot
+          publish_dir: SkyCast/publish/wwwroot
           force_orphan: true
