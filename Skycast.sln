@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SkyCast", "SkyCast", "{D34BAF35-7CC2-0932-812D-838928277AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkayCast", "SkyCast\SkayCast.csproj", "{B6E945B6-0328-4421-B72F-702701AA7146}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkyCast", "SkyCast\SkayCast.csproj", "{B6E945B6-0328-4421-B72F-702701AA7146}"
+
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
