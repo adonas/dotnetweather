@@ -22,11 +22,37 @@ jobs:
           dotnet-version: ${{env.DOTNET_VERSION}}
 
       #3.- Paquetes Nugget
+      - uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
 
       #4.- Instalar Node para TailWind
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
 
       #5.- Restore and publish
+      - name: Publicar App Blazor
+        run: |
+          dotnet restore
+          # Inyectar la API Key en el build          
+          echo "{\"OpenWeather\":{\"Key\":\"${{ secrets.OPENWEATHER_KEY }}\"}}" > SkyCast/appsettings.Production.json
+          dotnet publish SkyCast/SkyCast.csproj -c Release -o publish
 
-      #6.- Artifact
+      #6.- Artifact , generar un ejecutable y hacer pruebas
+      - uses: actions/upload-artifact@v3
+        with:
+          name: publish
+          path: publish
 
       #7.-Despliegue
+      - name: Deploy to packages
+        uses: peaceiris/actions-gh-pages@v4
+              
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .publish/wwwroot
+          force_orphan: true
