@@ -43,8 +43,8 @@ jobs:
       - name: Publicar App Blazor
         run: |
           dotnet restore
-          # Inyectar la API Key en el build          
-          echo "{\"OpenWeather\":{\"Key\":\"${{ secrets.OPENWEATHER_KEY }}\"}}" > SkyCast/appsettings.Production.json
+          # Inyectar la API Key en el build                    
+          echo "{\"OpenWeather\":{\"key\":\"${{ secrets.OPENWEATHER_KEY }}\"}}" > SkyCast/appsettings.Production.json
           dotnet publish SkyCast/SkayCast.csproj -c Release -o publish
 
       - name: Listar salida
