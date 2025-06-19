@@ -13,6 +13,7 @@ builder.Services.AddHttpClient<WeatherService>();
 
 var encKey = builder.Configuration["OpenWeather:key"];
 
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 
